@@ -10,6 +10,7 @@ router.post('/test', ProjectController.test);
 router.post('/saveProject', ProjectController.saveProject);
 router.get('/project/:id', ProjectController.getProject);
 router.get('/projects', ProjectController.getProjects);
+router.put('/project/:id', ProjectController.updateProject);
 
 
 module.exports = router;
