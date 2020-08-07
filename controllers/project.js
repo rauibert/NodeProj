@@ -90,6 +90,23 @@ var controller = {
                 project: projectRemoved 
             });
         });
+    },
+
+    uploadImage: function(req, res){
+
+        var projectId = req.params.id;
+        var filename = "Imagen no subida...";
+
+        if(req.files){
+            return res.status(200).send({
+                message: req.files,
+                files: req.files
+            });
+        }else{
+            return res.status(200).send({
+                message: filename
+            });
+        }
     }
 
 };

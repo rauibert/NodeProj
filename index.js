@@ -6,6 +6,7 @@ var port = 3700;
 mongoose.set('useFindAndModify', false);
 mongoose.Promise = global.Promise;
 
+
 //Conexión a base de datos local
 mongoose.connect('mongodb://localhost:27017/portfolio', {useNewUrlParser:true, useUnifiedTopology: true})
     .then(()=>{
