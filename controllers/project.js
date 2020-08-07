@@ -98,10 +98,21 @@ var controller = {
         var filename = "Imagen no subida...";
 
         if(req.files){
-            return res.status(200).send({
-                message: req.files,
-                files: req.files
+            var filePath = req.files.image.path;
+            var fileSplit = filePath.split('/');
+            var fileName = fileSplit[1];
+
+            Project.findByIdAndUpdate(projectId, {image: fileName}, {new: true} ,(err, projectUpdated) =>{
+                if(err) return res.status(500).send({message: 'Error al subir imagen'});
+
+                if(!projectUpdated) return res.status(404).send({message: 'No existe el proyecto'});
+    
+                return res.status(200).send({
+                    project: projectUpdated
+                });
             });
+
+            
         }else{
             return res.status(200).send({
                 message: filename
